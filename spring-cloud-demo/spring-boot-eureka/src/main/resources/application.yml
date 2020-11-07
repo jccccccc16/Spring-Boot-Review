@@ -1,0 +1,14 @@
+server:
+  port: 5000
+
+# 配置eureka
+eureka:
+  instance:
+    hostname: localhost # 配置主机地址
+
+  client:
+    register-with-eureka: false  # 本身就是注册中心，不用向注册中心注册主机
+    fetch-registry: false # 本身就是注册中心，不需要从注册中心中拉取
+    service-url:        # 客户端方法问当前注册中心使用的地址，条用组件所用的地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+

@@ -1,0 +1,12 @@
+server:
+  port: 1000
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:5000/eureka/
+# 配置该springboot应用的名称
+spring:
+  application:
+    name: provider  

@@ -1,0 +1,188 @@
+package com.cjc.crow.handler;
+
+import com.cjc.crow.api.MySqlRemoteService;
+import com.cjc.crow.api.RedisRemoteService;
+import com.cjc.crow.config.ShortMessageProperties;
+import com.cjc.crow.constant.CrowdConstant;
+import com.cjc.crow.entity.Member;
+import com.cjc.crow.entity.MemberVO;
+import com.cjc.crow.util.CrowdUtil;
+import com.cjc.crow.util.ResultEntity;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
+
+
+import javax.annotation.Resource;
+
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: cjc
+ * Date: 2020/11/5
+ * Time: 22:47
+ * To change this template use File | Settings | File Templates.
+ **/
+@Controller
+public class MemberHandler {
+
+    @Autowired
+    private ShortMessageProperties shortMessageProperties;
+
+    @Resource
+    private RedisRemoteService redisRemoteService;
+
+    @Resource
+    private MySqlRemoteService mySqlRemoteService;
+
+    private Logger logger = LoggerFactory.getLogger(MemberHandler.class);
+
+
+    @RequestMapping("/auth/member/send/short/message.json")
+    public @ResponseBody ResultEntity<String> sendMessage(@RequestParam("phoneNum") String phoneNum) {
+
+        logger.debug("获取的手机号码为: " + phoneNum);
+
+//        ResultEntity<String> sendMessageResultEntity = CrowdUtil.sendCodeByShortMessage(
+//                shortMessageProperties.getHost(),
+//                shortMessageProperties.getPath(),
+//                shortMessageProperties.getMethod(),
+//                shortMessageProperties.getAppcode(),
+//                phoneNum, shortMessageProperties.getTpl_id());
+
+        ResultEntity<String> sendMessageResultEntity = CrowdUtil.sendCodeByShortMessage(phoneNum);
+
+        // 判断是否发送成功
+        if (ResultEntity.SUCCESS.equals(sendMessageResultEntity.getResult())) {
+
+            // 获取验证码
+            String code = sendMessageResultEntity.getData();
+
+            logger.debug("验证码: " + code);
+
+            String key = CrowdConstant.REDIS_CODE_PREFIX + phoneNum;
+
+            ResultEntity<String> saveCodeResultEntity =
+                    redisRemoteService.setRedisKeyValueRemoteWithTimeout(key, code, 15, TimeUnit.MINUTES);
+
+            // 如果存入redis成功
+            if (ResultEntity.SUCCESS.equals(saveCodeResultEntity.getResult())) {
+
+                logger.debug("saveCodeResultEntity: " + saveCodeResultEntity);
+
+                return ResultEntity.successWithoutData();
+
+            } else { // 存入失败
+
+                return saveCodeResultEntity;
+            }
+        } else {  // 发送失败
+
+            logger.debug("saveCodeResultEntity: " + sendMessageResultEntity);
+
+            return sendMessageResultEntity;
+        }
+    }
+
+
+    @RequestMapping(value = "/auth/member/register", method = RequestMethod.POST)
+    public String saveMember(MemberVO memberVO, ModelMap map) {
+
+        // 1.获取redis中的验证码
+        // ① 获取memberVo中的手机号
+        String phoneNum = memberVO.getPhoneNum();
+
+        // ② 将memberVo中的手机号进行拼接成redis中的key
+        String key = CrowdConstant.REDIS_CODE_PREFIX + phoneNum;
+
+        // ③ 根据此key在redis中查找
+        ResultEntity<String> redisResultEntity = redisRemoteService.getRedisStringByKeyRemote(key);
+
+        // ④ 检查查询操作是否有效
+        String result = redisResultEntity.getResult();
+
+        // 判断是否失败
+        if (ResultEntity.FAILED.equals(result)) {
+
+            logger.info(redisResultEntity.getMessage());
+
+            map.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE, redisResultEntity.getMessage());
+
+            return "member-reg";
+        }
+
+
+        // 2.判断验证码是否为空
+        String redisCode = redisResultEntity.getData();
+
+        // 判断验证是否为空
+        if (redisCode == null || redisCode.equals("")) {
+
+            logger.info("redis中的验证码为空");
+
+            map.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE, CrowdConstant.MESSAGE_CODE_NOT_EXIST);
+
+            return "member-reg";
+        }
+
+        // 获取表单的验证码
+        String formCode = memberVO.getCode();
+
+        // 如果验证码不正确
+        if (!formCode.equals(redisCode)) {
+
+            logger.info("验证码不正确");
+
+            map.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE, CrowdConstant.MESSAGE_CODE_INVALID);
+
+            return "member-reg";
+
+        }
+
+
+        // ① 正确，将验证码移出
+        redisRemoteService.removeRedisKeyRemote(key);
+
+        // 4.执行密码加密
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        String userpswd = memberVO.getUserpswd();
+        String encodePswd = bCryptPasswordEncoder.encode(userpswd);
+        memberVO.setUserpswd(encodePswd);
+
+        // 5.保存member
+        // ①创建空member
+        Member member = new Member();
+
+        // ②复制属性
+        BeanUtils.copyProperties(memberVO, member);
+
+        ResultEntity<Member> mysqlResultEntity = mySqlRemoteService.saveMember(member);
+
+        // 6.如果保存失败
+        String mysqlResult = mysqlResultEntity.getResult();
+
+        if(ResultEntity.FAILED.equals(mysqlResult)){
+
+            // 输出保存失败的信息
+            logger.info(mysqlResultEntity.getMessage());
+
+            map.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,mysqlResultEntity.getMessage());
+
+            return "member-reg";
+        }
+
+        // 保存成功，跳转到登录页面
+
+        return"redirect:member-login";
+
+}
+
+
+}
