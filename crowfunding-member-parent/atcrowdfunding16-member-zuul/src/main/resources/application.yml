@@ -4,6 +4,14 @@ server:
 spring:
   application:
     name: crow-zuul
+  redis:
+    host: 192.168.52.140
+    jedis:
+      pool:
+        max-idle: 100
+  session:
+    store-type: redis
+
 
 eureka:
   client:
@@ -20,3 +28,8 @@ zuul:
     socket-timeout-millis: 3000
 
 
+
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

@@ -5,6 +5,7 @@ import com.cjc.crow.api.RedisRemoteService;
 import com.cjc.crow.config.ShortMessageProperties;
 import com.cjc.crow.constant.CrowdConstant;
 import com.cjc.crow.entity.Member;
+import com.cjc.crow.entity.MemberLoginVO;
 import com.cjc.crow.entity.MemberVO;
 import com.cjc.crow.util.CrowdUtil;
 import com.cjc.crow.util.ResultEntity;
@@ -19,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 
 import java.util.concurrent.TimeUnit;
@@ -46,7 +49,8 @@ public class MemberHandler {
 
 
     @RequestMapping("/auth/member/send/short/message.json")
-    public @ResponseBody ResultEntity<String> sendMessage(@RequestParam("phoneNum") String phoneNum) {
+    public @ResponseBody
+    ResultEntity<String> sendMessage(@RequestParam("phoneNum") String phoneNum) {
 
         logger.debug("获取的手机号码为: " + phoneNum);
 
@@ -168,21 +172,87 @@ public class MemberHandler {
         // 6.如果保存失败
         String mysqlResult = mysqlResultEntity.getResult();
 
-        if(ResultEntity.FAILED.equals(mysqlResult)){
+        if (ResultEntity.FAILED.equals(mysqlResult)) {
 
             // 输出保存失败的信息
             logger.info(mysqlResultEntity.getMessage());
 
-            map.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,mysqlResultEntity.getMessage());
+            map.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE, mysqlResultEntity.getMessage());
 
             return "member-reg";
         }
 
         // 保存成功，跳转到登录页面
 
-        return"redirect:member-login";
+        return "redirect:/auth/member/to/login/page.html";
 
-}
+    }
+
+    @RequestMapping(value = "/auth/member/do/login",method = RequestMethod.POST)
+    public String login(
+            @RequestParam("loginacct") String loginacct,
+            @RequestParam("userpswd") String userpswd,
+            ModelMap modelMap,
+            HttpSession session){
+
+        ResultEntity<Member> loginAcctResultEntity = mySqlRemoteService.getMemberByLoginAcct(loginacct);
+
+        // 1.如果失败，跳转到登录页面
+        if(ResultEntity.FAILED.equals(loginAcctResultEntity.getResult())){
+
+            modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,loginAcctResultEntity.getMessage());
+
+            logger.info("loginAcctResultEntity"+loginAcctResultEntity);
+
+            return "member-login";
+        }
+
+        Member mysqlMember = loginAcctResultEntity.getData();
+
+        if(mysqlMember == null){
+
+            modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,CrowdConstant.MESSAGE_LOGIN_FAILED);
+
+
+
+            return "member-login";
+        }
+
+
+        // 2.如果查询成功，则比对密码
+        // 由于每次加密的盐值都不一样，所以每次加密出来的字符串都不一样
+        // 不能将密码加密后两两对比
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+
+        String mysqlPswdEncode = mysqlMember.getUserpswd();
+
+        // 将页面的密码和数据中查找的密码对比
+        // 密码不正确
+        if(!bCryptPasswordEncoder.matches(userpswd,mysqlPswdEncode)){
+
+            // 返回登录页面
+            modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,CrowdConstant.MESSAGE_LOGIN_FAILED);
+
+            return "member-login";
+        }
+
+        // 密码正确
+        // 3.创建memberLoginVO，添加到session中
+        MemberLoginVO memberLoginVO = new MemberLoginVO();
+
+        // ①属性赋值
+        BeanUtils.copyProperties(mysqlMember,memberLoginVO);
+
+        session.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_MEMBER,memberLoginVO);
+
+        // 跳转到用户中心页面
+        return "redirect:/auth/member/to/center.html";
+
+
+
+    }
+
+
 
 
 }

@@ -20,6 +20,7 @@
         <module>atcrowdfunding17-member-api</module>
         <module>atcrowdfunding09-member-entity</module>
         <module>atcrowdfunding13-short-message</module>
+        <module>atcrowdfunding18-spring-session-a</module>
     </modules>
 
 
