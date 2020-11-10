@@ -1,0 +1,35 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: crow-zuul
+  redis:
+    host: 192.168.52.140
+    jedis:
+      pool:
+        max-idle: 100
+  session:
+    store-type: redis
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+zuul:
+  ignored-services: "*"
+  routes:
+    portal:
+      service-id: crow-authenticate
+      path: /**
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+
+
+
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

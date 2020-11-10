@@ -1,0 +1,4 @@
+spring:
+  redis:
+    host: 192.168.52.132
+    password: cjcisgood
