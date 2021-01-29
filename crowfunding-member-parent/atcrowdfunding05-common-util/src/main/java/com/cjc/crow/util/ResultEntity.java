@@ -86,4 +86,6 @@ public class ResultEntity<T> {
 		this.data = data;
 	}
 
+
+
 }

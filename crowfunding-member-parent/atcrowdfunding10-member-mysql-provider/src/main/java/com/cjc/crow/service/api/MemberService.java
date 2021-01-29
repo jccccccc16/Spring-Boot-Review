@@ -20,3 +20,6 @@ public interface MemberService {
      */
     void saveMember(Member member);
 }
+
+
+

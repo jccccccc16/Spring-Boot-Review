@@ -43,6 +43,7 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <!-- 为了能够使用实体类 -->
+
         <dependency>
             <groupId>com.cjc</groupId>
             <artifactId>atcrowdfunding09-member-entity</artifactId>

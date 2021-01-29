@@ -3,7 +3,7 @@ server:
 
 spring:
   redis:
-    host: 192.168.52.140
+    host: 192.168.52.138
 
 
   application:

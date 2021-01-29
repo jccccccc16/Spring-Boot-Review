@@ -41,7 +41,4 @@ public interface RedisRemoteService {
             @RequestParam("key") String key
     );
 
-
-
-
 }

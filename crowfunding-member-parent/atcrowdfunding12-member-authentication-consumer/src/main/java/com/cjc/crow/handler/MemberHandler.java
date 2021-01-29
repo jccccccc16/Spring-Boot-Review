@@ -48,6 +48,15 @@ public class MemberHandler {
     private Logger logger = LoggerFactory.getLogger(MemberHandler.class);
 
 
+    @RequestMapping("/auth/member/logout")
+    public String logout(HttpSession session) {
+
+        session.invalidate();
+
+        return "redirect:http://localhost:8080";
+    }
+
+
     @RequestMapping("/auth/member/send/short/message.json")
     public @ResponseBody
     ResultEntity<String> sendMessage(@RequestParam("phoneNum") String phoneNum) {
@@ -184,7 +193,7 @@ public class MemberHandler {
 
         // 保存成功，跳转到登录页面
 
-        return "redirect:/auth/member/to/login/page.html";
+        return "redirect:http://localhost/auth/member/to/login/page.html";
 
     }
 
@@ -212,8 +221,6 @@ public class MemberHandler {
         if(mysqlMember == null){
 
             modelMap.addAttribute(CrowdConstant.ATTR_NAME_MESSAGE,CrowdConstant.MESSAGE_LOGIN_FAILED);
-
-
 
             return "member-login";
         }
@@ -246,12 +253,31 @@ public class MemberHandler {
         session.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_MEMBER,memberLoginVO);
 
         // 跳转到用户中心页面
-        return "redirect:/auth/member/to/center.html";
+        return "redirect:http://localhost/auth/member/to/center.html";
 
 
 
     }
 
+
+//    @RequestMapping("/member/my/crowd")
+//    public String toMyCrowd(HttpSession session,ModelMap modelMap){
+//
+//        MemberLoginVO memberLoginVO = (MemberLoginVO) session.getAttribute(CrowdConstant.ATTR_NAME_LOGIN_MEMBER);
+//        Integer memberLoginVOId = memberLoginVO.getId();
+//
+//        // 项目信息
+//
+//        // 回报个数
+//
+//        // 交易状态
+//
+//        //
+//
+//
+//        return "member-center";
+//    }
+//
 
 
 

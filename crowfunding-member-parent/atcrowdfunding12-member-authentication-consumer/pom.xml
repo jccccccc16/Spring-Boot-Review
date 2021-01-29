@@ -59,6 +59,17 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- 引入springboot&redis整合场景 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- 引入springboot&springsession整合场景 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
 
     </dependencies>
 </project>

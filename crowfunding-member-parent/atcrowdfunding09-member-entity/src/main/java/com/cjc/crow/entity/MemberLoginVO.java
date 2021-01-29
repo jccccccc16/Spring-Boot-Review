@@ -1,5 +1,7 @@
 package com.cjc.crow.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: cjc
@@ -9,7 +11,7 @@ package com.cjc.crow.entity;
  *
  * 登录成功后，封装用户信息，保存到session中
  **/
-public class MemberLoginVO {
+public class MemberLoginVO implements Serializable {
 
     private Integer id;
 

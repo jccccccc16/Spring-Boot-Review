@@ -7,12 +7,18 @@ spring:
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
+  redis:
+    host: 192.168.52.138
+    jedis:
+      pool:
+        max-idle: 100
+  session:
+    store-type: redis
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:1000/eureka
-
 
 short:
   message:
@@ -25,3 +31,4 @@ short:
 logging:
   level:
     com.cjc.crow.handler.MemberHandler: debug
+

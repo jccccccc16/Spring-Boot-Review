@@ -38,6 +38,10 @@ public class CrowWebMvcConfig implements WebMvcConfigurer {
         registry.addViewController(memberUrlPath).setViewName(memberViewName);
 
 
+        // 我的众筹
+        registry.addViewController("/member/my/crowd").setViewName("member_crowd");
+
+
 
     }
 }

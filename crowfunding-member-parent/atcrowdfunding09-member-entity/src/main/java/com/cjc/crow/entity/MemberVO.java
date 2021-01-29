@@ -1,5 +1,7 @@
 package com.cjc.crow.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by IntelliJ IDEA.
  * User: cjc
@@ -7,7 +9,7 @@ package com.cjc.crow.entity;
  * Time: 11:01
  * To change this template use File | Settings | File Templates.
  **/
-public class MemberVO {
+public class MemberVO implements Serializable {
 
     private String loginacct;
 

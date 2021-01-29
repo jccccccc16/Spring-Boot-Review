@@ -2,6 +2,7 @@ package com.cjc.crow.config;
 
 import com.cjc.crow.constant.AccessPassResources;
 import com.cjc.crow.constant.CrowdConstant;
+import com.cjc.crow.entity.MemberLoginVO;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;

@@ -28,10 +28,10 @@ public class CrowTest {
 
     @Test
     public void testRedis(){
-
         System.out.println(redisTemplate);
         ValueOperations<String,String> valueOperations = redisTemplate.opsForValue();
-        valueOperations.set("apple","string");
+        valueOperations.set("apple" +
+                "","string");
         String string = valueOperations.get("apple");
         logger.info(string);
 
