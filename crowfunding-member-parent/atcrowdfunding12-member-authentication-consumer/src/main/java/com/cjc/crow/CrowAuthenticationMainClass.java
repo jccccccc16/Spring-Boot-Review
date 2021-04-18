@@ -19,8 +19,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @SpringBootApplication
 @EnableFeignClients
-public class
-CrowAuthenticationMainClass {
+public class CrowAuthenticationMainClass {
 
     public static void main(String[] args) {
         SpringApplication.run(CrowAuthenticationMainClass.class, args);

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="321945bd-79a7-408a-9fd5-755652c4b74c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Spring Boot Review.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/constant/CrowdConstant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/exception/AccessForbiddenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/exception/LoginAcctAlreadyInUseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/exception/LoginAcctAlreadyInUseForUpdateException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/exception/LoginFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/util/CrowdUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding05-common-util/src/main/java/com/cjc/crow/util/ResultEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding09-member-entity/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding09-member-entity/src/main/java/com/cjc/crow/entity/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding09-member-entity/src/main/java/com/cjc/crow/entity/MemberExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/java/com/cjc/crow/CrowMainClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/java/com/cjc/crow/handler/MemberProviderHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/java/com/cjc/crow/mapper/MemberMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/java/com/cjc/crow/service/api/MemberService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/java/com/cjc/crow/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/main/resources/mybatis/mapper/MemberMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding10-member-mysql-provider/src/test/java/com/cjc/crow/MyBatisTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding11-member-redis-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding12-member-authentication-consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding13-member-project-consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding14-member-order-consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding15-member-pay-consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding16-member-zuul/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding17-member-api/atcrowdfunding17-member-api.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding17-member-api/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/atcrowdfunding17-member-api/src/main/java/com/cjc/crow/api/MySqlRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/crowfunding-member-eureka/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/crowfunding-member-eureka/src/main/java/com/cjc/crowd/CrowdMainClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/crowfunding-member-eureka/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/crowfunding-member-parent.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crowfunding-member-parent/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-redis/spring-boot-redis.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-boot-eureka/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-boot-eureka/src/main/java/com/cjc/spring/cloud/eureka/EurekaMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-boot-eureka/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-common/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-common/src/main/java/com/cjc/spring/cloud/entity/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-common/src/main/java/com/cjc/spring/cloud/handler/EmployeeRemoteFallBackFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-common/src/main/java/com/cjc/spring/cloud/handler/EmployeeRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-common/src/main/java/com/cjc/spring/cloud/util/ResultEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-consumer/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-consumer/src/main/java/com/cjc/spring/cloud/consumer/ConsumerMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-consumer/src/main/java/com/cjc/spring/cloud/consumer/config/SpringCloudConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-consumer/src/main/java/com/cjc/spring/cloud/consumer/handler/EmployeeHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-consumer/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-provider/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-provider/src/main/java/com/cjc/spring/cloud/provider/ProviderMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-provider/src/main/java/com/cjc/spring/cloud/provider/handler/EmployeeRemoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-provider/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-zuul-demo/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-zuul-demo/spring-cloud-zuul-demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-zuul-demo/src/main/java/cjc/spring/cloud/zuul/ZuulMainType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-cloud-demo/spring-cloud-zuul-demo/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Program Files\software\dev\JetBrains\IntelliJ IDEA 2020.2.2\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jHMze6fWRXlHN9ol9aqCIICdvc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="321945bd-79a7-408a-9fd5-755652c4b74c" name="Default Changelist" comment="" />
+      <created>1603456830978</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603456830978</updated>
+      <workItem from="1603456833101" duration="65000" />
+      <workItem from="1603456906885" duration="508000" />
+      <workItem from="1603457434263" duration="242000" />
+      <workItem from="1604232089298" duration="23000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="573" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603456936413">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="573" y="325" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1603456936413" />
+    <state x="356" y="99" key="new project wizard" timestamp="1603457676072">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="356" y="99" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1603457676072" />
+  </component>
+</project>
